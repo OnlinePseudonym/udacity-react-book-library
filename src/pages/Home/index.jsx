@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
@@ -158,7 +159,7 @@ function Home() {
         </div>
       </div>
       <div className="open-search">
-        <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+        <Link to='/add-book'>Add a book</Link>
       </div>
     </div>
 
