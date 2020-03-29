@@ -16,7 +16,7 @@ class Search extends Component {
     return(
       <div className="search-books">
         <SearchBar onGetResults={this.updateResults} />
-        <Results />
+        <Results books={this.state.searchResults} />
       </div>
     )
   }
