@@ -18,14 +18,32 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    const { currentlyReading, wantToRead, read } = this.state
+    const { currentlyReading, wantToRead, read } = this.state  
+    const shelves = [
+      {
+        alias: 'currentlyReading',
+        title: 'Currently Reading',
+        books: currentlyReading
+      },
+      {
+        alias: 'wantToRead',
+        title: 'Want to Read',
+        books: wantToRead
+      },
+      {
+        alias: 'read',
+        title: 'Read',
+        books: read
+      }
+    ]
+    
     return (
       <div className="app">
         <Route exact path='/' render={() => (
-          <Home currentlyReading={currentlyReading} wantToRead={wantToRead} read={read} onAddToList={this.addToList} />
+          <Home shelves={shelves} onAddToList={this.addToList} />
         )} />
         <Route path='/add-book' render={() => (
-          <Search onAddToList={this.addToList} />
+          <Search shelves={shelves} onAddToList={this.addToList} />
         )} />
       </div>
     )

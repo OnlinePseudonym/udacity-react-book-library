@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class ShelfChanger extends Component {
-  state = {
-    listName: 'move'
-  }
-
   static propTypes = {
     onAddToList: PropTypes.func.isRequired,
+    shelf: PropTypes.string.isRequired,
     book: PropTypes.object
+  }
+
+  state = {
+    listName: this.props.shelf
   }
 
   handleChange = e => {

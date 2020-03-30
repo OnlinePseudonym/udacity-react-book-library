@@ -3,22 +3,7 @@ import { Link } from 'react-router-dom'
 
 import BookShelf from './components/Bookshelf'
 
-function Home({ currentlyReading, wantToRead, read, onAddToList }) {
-  const shelves = [
-    {
-      title: 'Currently Reading',
-      books: currentlyReading
-    },
-    {
-      title: 'Want to Read',
-      books: wantToRead
-    },
-    {
-      title: 'Read',
-      books: read
-    }
-  ]
-
+function Home({ shelves, onAddToList }) {
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -26,7 +11,7 @@ function Home({ currentlyReading, wantToRead, read, onAddToList }) {
       </div>
       <div className="list-books-content">
         <div>
-          {shelves.map((shelf, i) => <BookShelf key={i} books={shelf.books} title={shelf.title} onAddToList={onAddToList} />)}
+          {shelves.map((shelf, i) => <BookShelf key={i} books={shelf.books} title={shelf.title} shelves={shelves} onAddToList={onAddToList} />)}
         </div>
       </div>
       <div className="open-search">

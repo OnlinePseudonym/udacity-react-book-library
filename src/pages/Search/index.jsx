@@ -6,7 +6,8 @@ import Results from './components/Results'
 
 class Search extends Component {
   static propTypes = {
-    onAddToList: PropTypes.func.isRequired
+    onAddToList: PropTypes.func.isRequired,
+    shelves: PropTypes.array.isRequired
   }
 
   state = {
@@ -25,7 +26,7 @@ class Search extends Component {
     return(
       <div className="search-books">
         <SearchBar onGetResults={this.updateResults} />
-        <Results books={this.state.searchResults} onAddToList={this.props.onAddToList} />
+        <Results shelves={this.props.shelves} books={this.state.searchResults} onAddToList={this.props.onAddToList} />
       </div>
     )
   }
