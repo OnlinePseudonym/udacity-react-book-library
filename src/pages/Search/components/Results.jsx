@@ -1,5 +1,5 @@
 import React from 'react'
-import Book from '../../components/Book'
+import Book from '../../../components/Book'
 import PropTypes from 'prop-types'
 
 function Results({ books, onAddToList }) {
