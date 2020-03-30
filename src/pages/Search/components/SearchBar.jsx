@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as BooksAPI from '../../../BooksAPI'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class SearchBar extends Component {
   state = {
@@ -31,6 +32,10 @@ class SearchBar extends Component {
       </div>
     )
   }
+}
+
+SearchBar.propTypes = {
+  onGetResults: PropTypes.func
 }
 
 export default SearchBar
