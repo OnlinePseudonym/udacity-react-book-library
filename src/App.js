@@ -14,6 +14,7 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
+    // get persisted data from indexed db
     get('currentlyReading')
       .then(storedBooks => this.setState(() => ({currentlyReading: storedBooks || [] })))
     get('wantToRead')
@@ -23,8 +24,11 @@ class BooksApp extends React.Component {
   }
 
   addToList = (list, book) => {
+    // if book exists on another shelf remove from shelf before adding to new shelf
+    // Update indexed db while updating state
     Object.keys(this.state).forEach(stateKey => {
       const bookIndex = this.state[stateKey].findIndex(storedBook => storedBook.id === book.id)
+
       if (bookIndex > -1) {
         const filteredBooks = this.state[stateKey].filter((_book, i) => i !== bookIndex);
         this.setState(() => ({ [stateKey]: filteredBooks }))

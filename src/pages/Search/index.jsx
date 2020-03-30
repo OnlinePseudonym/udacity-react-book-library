@@ -14,6 +14,7 @@ class Search extends Component {
     searchResults: []
   }
 
+  // update searchResults in state, ensuring an array if passed to our bookshelf view
   updateResults = searchResults => {
     if (searchResults) {
       this.setState(() => ({ searchResults: searchResults.hasOwnProperty('error') ? searchResults.items : searchResults }))
