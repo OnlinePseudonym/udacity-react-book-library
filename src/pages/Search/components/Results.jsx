@@ -5,7 +5,7 @@ function Results({ books }) {
   return (
     <div className="search-books-results">
       <ol className="books-grid">
-        {books.map(book => <Book book={book} />)}
+        {books.length > 0 && books.map(book => <Book book={book} />)}
       </ol>
     </div>
   )
