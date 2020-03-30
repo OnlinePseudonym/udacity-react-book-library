@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-// import * as BooksAPI from './BooksAPI'
+import { get, set } from 'idb-keyval'
 import './App.css'
 
 import Home from './pages/Home/'
@@ -13,8 +13,27 @@ class BooksApp extends React.Component {
     read: []
   }
 
+  componentDidMount() {
+    get('currentlyReading')
+      .then(storedBooks => this.setState(() => ({currentlyReading: storedBooks || [] })))
+    get('wantToRead')
+      .then(storedBooks => this.setState(() => ({wantToRead: storedBooks || []})))    
+    get('read')
+      .then(storedBooks => this.setState(() => ({read: storedBooks || []})))
+  }
+
   addToList = (list, book) => {
+    Object.keys(this.state).forEach(stateKey => {
+      const bookIndex = this.state[stateKey].findIndex(storedBook => storedBook.id === book.id)
+      if (bookIndex > -1) {
+        const filteredBooks = this.state[stateKey].filter((_book, i) => i !== bookIndex);
+        this.setState(() => ({ [stateKey]: filteredBooks }))
+        set(stateKey, filteredBooks);
+      }
+    })
+
     this.setState(oldState => ({ [list]: [...oldState[list], book]}))
+    set(list, [...this.state[list], book]);
   }
 
   render() {
