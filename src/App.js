@@ -36,8 +36,10 @@ class BooksApp extends React.Component {
       }
     })
 
-    this.setState(oldState => ({ [list]: [...oldState[list], book]}))
-    set(list, [...this.state[list], book]);
+    if (Object.keys(this.state).includes(list)) {
+      this.setState(oldState => ({ [list]: [...oldState[list], book]}))
+      set(list, [...this.state[list], book]);
+    }
   }
 
   render() {
