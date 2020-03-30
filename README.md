@@ -10,7 +10,7 @@ This is a bookshelf ui powered by react, it uses indexed db to persist data afte
 
 Installs all dependencies and perpares the project for running locally/ building for deployment
 
-* node is a prerequisite *
+*node is a prerequisite*
 
 ## Running & Building
 
